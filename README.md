@@ -1,1 +1,1 @@
-# self-pruning-neural-network
+Production-ready HR Workflow Designer built with React Flow, TypeScript, and Zustand. Features dynamic node configuration, graph-based simulation engine, real-time visual validation, and JSON export/import.# self-pruning-neural-network
