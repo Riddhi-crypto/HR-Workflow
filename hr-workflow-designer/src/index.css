@@ -1,0 +1,158 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-bg: #fafaf7;
+    --color-surface: #ffffff;
+    --color-border: #e8e8e3;
+    --color-border-strong: #d0d0c8;
+    --color-text: #171714;
+    --color-text-muted: #6b6b61;
+    --color-accent: #e85d2f;
+    --color-accent-hover: #cf4a1f;
+    --color-accent-soft: #fff0e8;
+    --color-approve: #16a34a;
+    --color-approve-soft: #dcfce7;
+    --color-reject: #dc2626;
+    --color-reject-soft: #fee2e2;
+    --grid-size: 20px;
+  }
+
+  html,
+  body,
+  #root {
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+  }
+
+  body {
+    font-family: 'Geist', 'Inter', system-ui, -apple-system, sans-serif;
+    color: var(--color-text);
+    background: var(--color-bg);
+    font-feature-settings: 'cv11', 'ss01', 'ss03';
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  button {
+    font-family: inherit;
+  }
+
+  input,
+  textarea,
+  select {
+    font-family: inherit;
+    font-size: 14px;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center gap-1.5 rounded-lg px-3 py-1.5 text-sm font-medium transition-all disabled:cursor-not-allowed disabled:opacity-40;
+  }
+  .btn-primary {
+    @apply bg-ink-950 text-white hover:bg-ink-900;
+  }
+  .btn-accent {
+    @apply bg-accent text-white hover:bg-accent-hover;
+  }
+  .btn-ghost {
+    @apply border border-ink-200 bg-white text-ink-900 hover:bg-ink-50;
+  }
+
+  .field-label {
+    @apply mb-1 block text-[11px] font-semibold uppercase tracking-[0.08em] text-ink-500;
+  }
+  .field-input {
+    @apply w-full rounded-md border border-ink-200 bg-white px-2.5 py-1.5 text-sm text-ink-900 placeholder:text-ink-400 focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20;
+  }
+  .field-textarea {
+    @apply field-input min-h-[64px] resize-y;
+  }
+
+  /* Decision chip */
+  .chip {
+    @apply inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[11px] font-semibold uppercase tracking-wide;
+  }
+  .chip-present {
+    @apply bg-[var(--color-approve-soft)] text-[var(--color-approve)];
+  }
+  .chip-absent {
+    @apply bg-[var(--color-reject-soft)] text-[var(--color-reject)];
+  }
+  .chip-pending {
+    @apply bg-ink-100 text-ink-600;
+  }
+}
+
+/* React Flow dotted grid */
+.react-flow__background {
+  background-color: var(--color-bg);
+}
+
+/* Edge colors */
+.react-flow__edge-path {
+  stroke-width: 1.75;
+}
+.react-flow__edge.edge-present .react-flow__edge-path {
+  stroke: var(--color-approve);
+}
+.react-flow__edge.edge-absent .react-flow__edge-path {
+  stroke: var(--color-reject);
+  stroke-dasharray: 6 4;
+}
+.react-flow__edge.edge-default .react-flow__edge-path {
+  stroke: var(--color-border-strong);
+}
+.react-flow__arrowhead {
+  fill: currentColor;
+}
+
+/* Handles */
+.react-flow__handle {
+  width: 10px;
+  height: 10px;
+  border: 2px solid white;
+  background: var(--color-border-strong);
+}
+.react-flow__handle-present {
+  background: var(--color-approve);
+}
+.react-flow__handle-absent {
+  background: var(--color-reject);
+}
+
+/* Controls */
+.react-flow__controls {
+  box-shadow: var(--shadow-panel);
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.react-flow__controls-button {
+  background: white;
+  border-bottom: 1px solid var(--color-border);
+}
+
+/* Scrollbar polish */
+.custom-scroll::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+.custom-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scroll::-webkit-scrollbar-thumb {
+  background: var(--color-border-strong);
+  border-radius: 4px;
+}
+.custom-scroll::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-muted);
+}
